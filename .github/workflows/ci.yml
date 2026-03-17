@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TMDB_V3_API_KEY: ${{ secrets.TMDB_V3_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install
+        working-directory: app
+        run: npm install
+
+      - name: Test
+        working-directory: app
+        run: npm test
+
+      - name: Build
+        working-directory: app
+        run: npm run build
+
+      - name: Build Docker image
+        run: docker build -t netflix-local:ci .
+
+      # Optional security scan (enable when ready)
+      # - name: Trivy Scan
+      #   uses: aquasecurity/trivy-action@0.20.0
+      #   with:
+      #     image-ref: netflix-local:ci

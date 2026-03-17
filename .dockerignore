@@ -1,0 +1,7 @@
+.git
+.github
+app/node_modules
+app/dist
+Dockerfile
+k8s
+README.md

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Netflix-Style Local App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="logo">N</div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Series</a>
+        <a href="#">Films</a>
+        <a href="#">New & Popular</a>
+        <a href="#">My List</a>
+      </nav>
+      <div class="nav-actions">
+        <span class="pill">LOCAL</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Featured</p>
+          <h1>Project Nightfall</h1>
+          <p class="subtitle">
+            A bold, local-first DevOps portfolio project. Replace this static UI
+            with your real Netflix clone when you are ready.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary">Play</button>
+            <button class="btn-secondary">More Info</button>
+          </div>
+          <p class="note">TMDB key placeholder: __TMDB_V3_API_KEY__</p>
+        </div>
+      </section>
+
+      <section class="row">
+        <h2>Trending Now</h2>
+        <div id="row-trending" class="cards"></div>
+      </section>
+
+      <section class="row">
+        <h2>Top Picks For You</h2>
+        <div id="row-top" class="cards"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
