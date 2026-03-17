@@ -1,44 +1,53 @@
-# Netflix-Style DevOps Project (Local Only)
+# Netflix-Style Home Page DevOps Project
 
-This repo is a local-first, GitHub Actions-based DevOps learning project. It ships a simple Netflix-style static UI, a Docker image, local Kubernetes manifests, and a CI pipeline you can extend.
+A local-first Netflix-style frontend app with a DevOps workflow built around Node.js, Docker, GitHub Actions, and Kubernetes.
 
-## Quick Start (Local)
+This repository is designed as a beginner-friendly DevOps portfolio project. It includes a simple Netflix-style static UI, a reproducible container build, a local Kubernetes deployment, and a CI pipeline you can grow over time.
+
+## What You Learn
+
+- How a frontend app moves from source code to a built artifact
+- How Docker packages the app for consistent local deployment
+- How GitHub Actions automates install, test, build, and image creation
+- How Kubernetes runs and exposes the application locally
+
+## Quick Start
 
 1. Install Node.js 20+ and Docker Desktop.
-2. Run the app locally:
+2. Build the app locally:
    - `cd app`
    - `npm install`
    - `npm run build`
-   - Open `app/dist/index.html` in a browser.
-3. Build and run the container:
+3. Open `app/dist/index.html` in your browser.
+
+## Run With Docker
+
+1. Move to the project root.
+2. Build the image:
    - `docker build -t netflix-local:latest .`
+3. Run the container:
    - `docker run -p 8080:80 netflix-local:latest`
-   - Open http://localhost:8080
+4. Open `http://localhost:8080`
 
-## Local Kubernetes (Optional)
+## Run On Local Kubernetes
 
-1. Start a local cluster (minikube or kind).
-2. Apply manifests:
+1. Start a local cluster with `minikube` or `kind`.
+2. Apply the manifests:
    - `kubectl apply -f k8s/namespace.yaml`
    - `kubectl apply -f k8s/deployment.yaml`
    - `kubectl apply -f k8s/service.yaml`
-3. Access the service using NodePort.
+3. Access the app on `http://localhost:30080`
 
-## Repo Structure
+## Project Structure
 
-- `app/` - The frontend app and build scripts.
-- `Dockerfile` - Builds the app and serves it with Nginx.
-- `.github/workflows/ci.yml` - GitHub Actions pipeline (local-only focus).
-- `k8s/` - Local Kubernetes manifests.
-- `docs/` - Deep-dive learning path and notes.
+- `app/` contains the frontend source and build scripts
+- `.github/workflows/ci.yml` contains the GitHub Actions pipeline
+- `k8s/` contains the Kubernetes manifests
+- `docs/` contains the learning roadmap and notes
 
-## How To Extend
+## Next Steps
 
-- Replace `app/public/index.html` with a real Netflix clone UI.
-- Add real tests in `app/` and update `npm test`.
-- Add Trivy and SonarQube stages to `ci.yml` when ready.
-- Add Ingress after installing ingress-nginx in your local cluster.
-
-## Environment Variables
-
-Copy `.env.example` to `.env` and add a real TMDB key when you build the real clone.
+- Replace the demo UI with your full Netflix clone
+- Add real frontend tests
+- Enable Trivy or other security scanning in CI
+- Add Prometheus and Grafana for local monitoring
